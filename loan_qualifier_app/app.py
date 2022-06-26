@@ -131,5 +131,29 @@ def run():
     save_qualifying_loans(qualifying_loans)
 
 
+def test():
+    """Test with hardcoded parameters."""
+    import csv # for writing output
+
+    with open("data/daily_rate_sheet.csv") as f:
+        header = f.readline()
+    bank_data = load_csv(f)
+
+    credit_score, debt, income, loan_amount, home_value = (
+        800,
+        400,
+        12000,
+        1000000,
+        400000
+    )
+
+    qualifying_loans = find_qualifying_loans(
+        bank_data, credit_score, debt, income, loan_amount, home_value
+    )
+    with open("test/loans.csv", "w", newline="") as f:
+       w = csv.writer(f)
+    
+    
+
 if __name__ == "__main__":
     fire.Fire(run)

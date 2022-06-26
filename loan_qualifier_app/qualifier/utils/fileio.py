@@ -40,6 +40,11 @@ def save_csv(loan_data, csvpath):
         None
     
     """
+    # get the header from a static reference
+    with open("data/daily_rate_sheet.csv", "r") as rate_sheet:
+        header = rate_sheet.readline()
+
     with open(csvpath, "w", newline="") as csvfile:
         w = csv.writer(csvfile)
+        w.writerow(header)
         w.writerows(loan_data)
