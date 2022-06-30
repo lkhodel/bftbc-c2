@@ -3,15 +3,6 @@
 The purpose of this program is to demonstrate integration with an existing
 codebase.
 
-Just after the title, introduce your project by describing attractively what the project is about and what is the main problem that inspires you to create this project or what is the main contribution for the potential user of your project.
-
----
-
-## Technologies
-
-This project includes dependencies on fire and questionary, which are not in the
-standard library.
-
 ---
 
 ## Installation Guide
@@ -24,9 +15,8 @@ git clone https://github.com/lkhodel/bftbc-c2
 
 ## Usage
 
-The app runs from the root directory and has no options. 
-
 ~~~
+bftbc-c2/loan_qualifiar_app 
 $ python app.py -h
 
 NAME

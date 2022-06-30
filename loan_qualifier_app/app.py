@@ -9,15 +9,13 @@ Example:
 import sys
 import fire
 import questionary
+
 from pathlib import Path
-
 from qualifier.utils.fileio import load_csv, save_csv
-
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
     calculate_loan_to_value_ratio,
 )
-
 from qualifier.filters.max_loan_size import filter_max_loan_size
 from qualifier.filters.credit_score import filter_credit_score
 from qualifier.filters.debt_to_income import filter_debt_to_income
@@ -133,15 +131,9 @@ def run():
 
 def test():
     """Test with hardcoded parameters."""
-    import csv # for writing output
 
     rate_sheet = Path("data/daily_rate_sheet.csv")
     bank_data = load_csv(rate_sheet)
-    header = None 
-    with open(rate_sheet) as f:
-        # csv.writer requires a sequence of strs
-        header = f.readline().strip().split(',')
-
     credit_score, debt, income, loan_amount, home_value = (
         800,
         6000,
@@ -153,12 +145,10 @@ def test():
     qualifying_loans = find_qualifying_loans(
         bank_data, credit_score, debt, income, loan_amount, home_value
     )
-    output_path = "test/loans.csv"
-    with open(output_path, "w", newline="") as f:
-       w = csv.writer(f)
-       w.writerow(header)
-       w.writerows(bank_data)
-       print(f"Wrote loans to: {output_path}")
+
+    output_path = Path("test/loans.csv")
+    save_csv(bank_data, output_path)
+    print(f"Wrote loans to: {output_path}")
     
 
 if __name__ == "__main__":
