@@ -135,25 +135,35 @@ def test():
     """Test with hardcoded parameters."""
     import csv # for writing output
 
-    with open("data/daily_rate_sheet.csv") as f:
-        header = f.readline()
-    bank_data = load_csv(f)
+    rate_sheet = Path("data/daily_rate_sheet.csv")
+    bank_data = load_csv(rate_sheet)
+    header = None 
+    with open(rate_sheet) as f:
+        # csv.writer requires a sequence of strs
+        header = f.readline().strip().split(',')
 
     credit_score, debt, income, loan_amount, home_value = (
         800,
-        400,
-        12000,
-        1000000,
+        6000,
+        20000,
+        100000,
         400000
     )
 
     qualifying_loans = find_qualifying_loans(
         bank_data, credit_score, debt, income, loan_amount, home_value
     )
-    with open("test/loans.csv", "w", newline="") as f:
+    output_path = "test/loans.csv"
+    with open(output_path, "w", newline="") as f:
        w = csv.writer(f)
-    
+       w.writerow(header)
+       w.writerows(bank_data)
+       print(f"Wrote loans to: {output_path}")
     
 
 if __name__ == "__main__":
-    fire.Fire(run)
+    exposed_arguments = { 
+        "run": run,
+        "test": test
+    }
+    fire.Fire(exposed_arguments)
