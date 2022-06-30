@@ -1,0 +1,50 @@
+  107  git add LICENSE 
+  108  git add README.md 
+  109  git commit -m "WIP"
+  110  cd /g/
+  111  cd -
+  112  git status
+  113  git add README.md app.py 
+  114  file loans
+  115  head loans
+  116  rm loans 
+  117  git status
+  118  git diff --staged
+  119  git log
+  120  git diff --staged
+  121  git commit -m "Cleanup test function. Update README.md"
+  122  git status
+  123  git add README.md 
+  124  git commit -m "fixup"
+  125  git log
+  126  git log -3
+  127  git log -4
+  128  git log rebase -i f5a0ad6
+  129  git rebase -i f5a0ad6
+  130  git status
+  131  git checkout -- qualifier/utils/__pycache__/
+  132  git status
+  133  git rebase -i f5a0ad6
+  134  git log -5
+  135  git rebase -i 8ecc26a
+  136  git log
+  137  git log
+  138  git rebase -i 4bffef
+  139  git rebase -i c08651
+  140  vim
+  141  git commit
+  142  git add .gitignore 
+  143  git commit
+  144  git status
+  145  cat .gitignore 
+  146  git remote
+  147  git remote add
+  148  git remote add origin keley/FTBC/FinTech-Workspace/challenges/c2/loan_qualifier_app (master)
+  149  $ git remote add origin https://github.com/lkhodel/bftbc-c2
+  150  git remote add origin https://github.com/lkhodel/bftbc-c2
+  151  git status
+  152  history 50
+  153  git status
+  154  git commit -m "Add .gitignore"
+  155  git log -2
+  156  history 50 > terminal_history.txt
